@@ -19,45 +19,16 @@ function ajaxGet(url, callback) {
 ajaxGet("https://api.jcdecaux.com/vls/v3/stations?contract=toyama&apiKey=76b2d676841c793fb1d815d95caf51aba293ce35", function (response) {  
     var velos = JSON.parse(response);
    
-    var x = 0;
-    var y = 0;
-    var marker = L.marker([x, y]);
-    function dispInfos(e) {
-        var addressEvent = document.createElement("li");
-        var placesEvent = document.createElement("li");
-        var bikesEvent = document.createElement("li");
-
-        addressEvent.id="address";
-        placesEvent.id="places";
-        bikesEvent.id="bikes";
-        
-        addressEvent.textContent="Adresse :";
-        placesEvent.textContent="il y a .. places";
-        bikesEvent.textContent=".. vélos disponibles";
-        
-        document.getElementById("station_details_list").appendChild(addressEvent);
-        document.getElementById("station_details_list").appendChild(placesEvent);
-        document.getElementById("station_details_list").appendChild(bikesEvent);
+    function dispInfos(velo) {
+        document.getElementById("address").textContent = velo.address;
+        console.log(velo);
     }
 
-    function dispPlaces(e) {
-        var placeEvent = document.createElement("li");
-        placeEvent.id="places";
-        placeEvent.textContent="il y a .. places";
-        document.getElementById("station_details_list").appendChild(places);
-    }
-
-    function dispBikes(e) {
-        var bikesEvent = document.createElement("li");
-        bikeEvent.id="bike";
-        bikeEvent.textContent=".. vélos disponibles";
-        document.getElementById("station_details_list").appendChild(bike);
-    }
     velos.forEach((velo) => {
-    x = velo.position.latitude;
-    y = velo.position.longitude;
-    marker = L.marker([x, y]).addTo(map);
-    marker.addEventListener("click", dispInfos);
+        const x = velo.position.latitude;
+        const y = velo.position.longitude;
+        const marker = L.marker([x, y]).addTo(map);
+        marker.addEventListener("click", () => dispInfos(velo));
     });
 });
 
