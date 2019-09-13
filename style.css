@@ -11,7 +11,11 @@
     padding-left: 5%;
 }
 
-/*#container {
+#station_details form {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+}
+
+/*#station_details {
+    display: none;
 }*/

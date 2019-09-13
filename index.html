@@ -20,14 +20,20 @@
             <p>Détails de la station</p>
             <ul id="station_details_list">
                 <li>Adresse : <span id="address"></span></li>
+                <li><span id="places"></span> places</li>
+                <li><span id="bikes"></span> vélos disponibles</li>
             </ul> 
-            <form method="post" action="#">
-                <input type="text" name="name" placeholder="Name">
-                <input type="text" name="first name" placeholder="First Name">
+            <form name="main_form" onsubmit="return false" action="">
+                <input type="text" name="name" id="form_name" placeholder="Name" required>
+                <input type="text" name="first_name" id="form_first_name" placeholder="First Name" required>
+                <span id="submitButton">
+                    <input type ="submit" value="Réserver">
+                </span>
             </form>
         </div>
     </div>
+    <script src="ajax.js"></script>
+    <script src="map.js"></script>
     <script src="main.js"></script>
 </body>
-
 </html>
