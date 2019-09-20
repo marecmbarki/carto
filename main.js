@@ -10,16 +10,16 @@ sendForm.addEventListener("click", function() {
     localStorage.setItem("First-Name", firstNameForm);
 });
 
-    let slides = document.querySelectorAll('#slides .slide');
-    let currentSlide = 0;
+    let slides = document.querySelectorAll("#slides > LI");
+    let i = 0;
     
     function nextSlide() {
-        slides[currentSlide].className = 'slide';
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].className = 'slide_showing';
+        slides[i].className = 'slide';
+        i = (i + 1) % slides.length;
+        slides[i].className = 'slide_showing';
     }
 
-    let slideInterval = setInterval(nextSlide,5000);
+    let slideInterval = setInterval(nextSlide,2000);
 
 
 
