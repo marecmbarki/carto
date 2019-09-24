@@ -19,7 +19,7 @@ sendForm.addEventListener("click", function() {
         slides[i].className = 'slide_showing';
     }
 
-    let slideInterval = setInterval(nextSlide,2000);
+    let slideInterval = setInterval(nextSlide,5000);
 
 
 

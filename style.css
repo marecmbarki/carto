@@ -44,17 +44,29 @@
     flex-direction: row;
 }
 #map {
-    height: 300px;
-    width: 46%;
+    height: 635px;
+    width: 50%;
 }
 
 #station_details {
-    padding-left: 5%;
+    margin-left: 5%;
+    border: outset;
+    width: 40%;
+    padding: 1%;
+
 }
 
 #station_details form {
     display: flex;
     flex-direction: column;
+}
+
+#station_details form input {
+    margin: 3% 0;
+}
+
+#station_details p, li {
+    font-size: 1.5em;
 }
 
 /*#station_details {
