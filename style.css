@@ -1,4 +1,26 @@
 
+#slider_buttons {
+    position: absolute;
+    top: 400px;
+    left: 475px;
+    display: flex;
+}
+
+#slider_buttons #play {
+    display: none;
+}
+
+#slider_buttons img {
+    position: relative;
+    z-index: 3;
+    margin: 0 20px;
+}
+
+#slider_buttons img:hover {
+    width: 59px;
+    height: 59px;
+}
+
 #slides {
     position: relative;
     height: 472px;

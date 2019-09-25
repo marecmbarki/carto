@@ -1,11 +1,3 @@
-/*let posX,posY;
-let draw = false;
-let firstDraw = true;
-
-let canvas = document.getElementById("signature");
-let ctx = canvas.getContext("2d");
-let canvasCoord = canvas.getBoundingClientRect();
-let clearButton = document.getElementById*/
 
 class Sign {
     constructor() {
