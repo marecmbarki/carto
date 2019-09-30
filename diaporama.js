@@ -6,13 +6,13 @@ class Slider {
         this.play = document.getElementById("play");
         this.pause = document.getElementById("pause");
         this.leftScroll = document.getElementById("left_arrow");
-        this.rightScroll = document.getElementById("right_arrow"); 
-        }
+        this.rightScroll = document.getElementById("right_arrow");
+    }
     
     start() {
         this.slideInterval = setInterval(this.nextSlide.bind(this),5000);
     }
-    
+
     stop() {
         clearInterval(this.slideInterval);
     }
@@ -21,6 +21,7 @@ class Slider {
         this.slides[this.i].className = 'slide';
         this.i = (this.i + 1) % this.slides.length;
         this.slides[this.i].className = 'slide_showing';
+
     }
 
     load() {

@@ -1,11 +1,10 @@
-
 class Sign {
     constructor() {
         // Variables :
-        this.color = "#000";
+        this.color = "blue";
         this.painting = false;
         this.started = false;
-        this.width_brush = 1;
+        this.width_brush = 2;
         this.canvas = document.getElementById("signature");
         this.cursorX, this.cursorY;
         this.context = this.canvas.getContext('2d');
@@ -18,62 +17,67 @@ class Sign {
         this.drawLine();
     }
     canvasCreate() {
-        this.context.fillRect(0,0,200,50);
+        this.context.fillStyle = "gold";
+        this.context.fillRect(0,0,600,300);
     }
     
     mousedown() {
-        let that = this;
         
         // Click souris enfoncé sur le canvas, je dessine :
-        this.canvas.mousedown(function (e) {
-            that.painting = true;
+        this.canvas.addEventListener("mousedown", (e)=> {
+            this.painting = true;
+
+            let rectangle = this.canvas.getBoundingClientRect(e);
+
 
             // Coordonnées de la souris :
-            that.cursorX = (e.pageX - this.offsetLeft);
-            that.cursorY = (e.pageY - this.offsetTop);
-
+            this.cursorX = (e.pageX - rectangle.left);
+            this.cursorY = (e.pageY - rectangle.top);
         });
 
     }
 
     mouseup() {
-        let that = this.
 
         // Relachement du Click sur tout le document, j'arrête de dessiner :
-        this.canvas.mouseup(function () {
-            that.painting = false;
-            that.started = false;
+        this.canvas.addEventListener("mouseup", ()=> {
+            this.painting = false;
+            this.started = false;
         });
     }
 
     mousemove() {
-        let that = this;
         
         // Mouvement de la souris sur le canvas :
-        this.canvas.mousemove(function (e) {
+        this.canvas.addEventListener("mousemove", (e)=> {
+            
+            let rectangle = this.canvas.getBoundingClientRect(e);
+
             // Si je suis en train de dessiner (click souris enfoncé) :
-            if (that.painting) {
+            if (this.painting) {
                 // Set Coordonnées de la souris :
-                that.cursorX = (e.pageX - this.offsetLeft) - 2; // 10 = décalage du curseur
-                that.cursorY = (e.pageY - this.offsetTop) - 2;
-                that.drawLine()
+                this.cursorX = (e.pageX - rectangle.left) - 2; // 10 = décalage du curseur
+                this.cursorY = (e.pageY - rectangle.top) - 2;
+                this.drawLine(e)
             }
         });
     }
     // Fonction qui dessine une ligne :
-    drawLine() {
+    drawLine(e) {
+        
+        this.context.strokeStyle = this.color;
+        this.context.lineWidth = this.width_brush;
+
         // Si c'est le début, j'initialise
         if (!this.started) {
             // Je place mon curseur pour la première fois :
-            this.context.beginPath();
             this.context.moveTo(this.cursorX, this.cursorY);
+            this.context.beginPath();
             this.started = true;
         }
         // Sinon je dessine
         else {
-            this.context.lineTo(this.cursorX, this.cursorY);
-            this.context.strokeStyle = this.color;
-            this.context.lineWidth = this.width_brush;
+            this.context.lineTo(e.offsetX, e.offsetY);
             this.context.stroke();
         }
 

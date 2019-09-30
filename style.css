@@ -13,7 +13,7 @@
 #slider_buttons img {
     position: relative;
     z-index: 3;
-    margin: 0 20px;
+    margin: 0 26px;
 }
 
 #slider_buttons img:hover {
@@ -94,3 +94,10 @@
 /*#station_details {
     display: none;
 }*/
+
+#signature {
+    position: relative;
+    left: 863px;
+    bottom: 251px;
+    display: none;
+}
