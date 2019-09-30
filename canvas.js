@@ -8,6 +8,7 @@ class Sign {
         this.canvas = document.getElementById("signature");
         this.cursorX, this.cursorY;
         this.context = this.canvas.getContext('2d');
+        this.button = document.getElementById("check");
         // Trait arrondi :
         this.context.lineJoin = 'round';
         this.context.lineCap = 'round';
@@ -26,13 +27,14 @@ class Sign {
         // Click souris enfoncé sur le canvas, je dessine :
         this.canvas.addEventListener("mousedown", (e)=> {
             this.painting = true;
-
             let rectangle = this.canvas.getBoundingClientRect(e);
-
 
             // Coordonnées de la souris :
             this.cursorX = (e.pageX - rectangle.left);
             this.cursorY = (e.pageY - rectangle.top);
+            
+            //Apparition bouton valider
+            this.button.style.display = "block";
         });
 
     }

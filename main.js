@@ -24,3 +24,28 @@ sendForm.addEventListener("click", function() {
 
     signature.canvasCreate();
 });
+
+//Timer
+
+let timer = document.getElementById("bookingTimer");
+let minute = 19;
+let seconde = 59;
+let countdownInterval = setInterval(()=> {        
+    if (minute === '0'+ 0) {
+            if (seconde === ('0' + 0))
+            {
+            console.log("okok");
+            }
+    }
+
+    seconde--;
+    if (seconde < 0 ) {
+        seconde=59;
+        minute--;
+    }
+
+    if (seconde < 10) {
+        seconde = '0' + seconde;
+    }
+        console.log(minute +"et" + seconde);
+}, 100);

@@ -106,20 +106,23 @@
     position: absolute;
 }
 
-/*#check {
-    width: 81px;
-    height: 41px;
-    background: green;
-    position: relative;
-    top: 573px;
-    left: 758px;
-}*/
+#check {
+    display: none;
+}
 
 #check p {
     color: #ffffff;
-    background: green;
+    background: #4cbb17;
     padding: 12px 24px;
     position: relative;
     top: 557px;
     left: 752px;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 3px 3px 3px #023b1c;
+}
+
+#check p:hover {
+    background: #338310;
+    box-shadow: 2px 2px 2px #000000;
 }
