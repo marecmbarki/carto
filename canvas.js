@@ -1,7 +1,7 @@
 class Sign {
     constructor() {
         // Variables :
-        this.color = "blue";
+        this.color = "#000000";
         this.painting = false;
         this.started = false;
         this.width_brush = 2;
@@ -17,7 +17,7 @@ class Sign {
         this.drawLine();
     }
     canvasCreate() {
-        this.context.fillStyle = "gold";
+        this.context.fillStyle = "rgb(179,200,158)";
         this.context.fillRect(0,0,600,300);
     }
     

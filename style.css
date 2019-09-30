@@ -101,3 +101,25 @@
     bottom: 251px;
     display: none;
 }
+
+#validate_button {
+    position: absolute;
+}
+
+/*#check {
+    width: 81px;
+    height: 41px;
+    background: green;
+    position: relative;
+    top: 573px;
+    left: 758px;
+}*/
+
+#check p {
+    color: #ffffff;
+    background: green;
+    padding: 12px 24px;
+    position: relative;
+    top: 557px;
+    left: 752px;
+}
