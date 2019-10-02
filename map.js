@@ -11,8 +11,12 @@ class Map {
 
                 //dispForm.style.display = "block";
                 document.getElementById("address").textContent = velo.address;
+                //je stock l'addresse pour l'afficher à la réservation
+                localStorage.setItem("Adresse", velo.address);
+
                 document.getElementById("places").textContent = velo.mainStands.availabilities.stands;
                 document.getElementById("bikes").textContent = velo.totalStands.availabilities.bikes;
+                
             }
 
             velos.forEach((velo) => {
