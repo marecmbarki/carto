@@ -95,9 +95,9 @@ ul {
     font-size: 1.5em;
 }
 
-/*#station_details {
+#station_details {
     display: none;
-}*/
+}
 
 #canvas_contain {
     position: absolute;

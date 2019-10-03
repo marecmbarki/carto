@@ -7,9 +7,9 @@ class Map {
             const velos = JSON.parse(response);
         
             function dispInfos(velo) {
-                //let dispForm = document.getElementById("station_details");
+                let dispForm = document.getElementById("station_details");
 
-                //dispForm.style.display = "block";
+                dispForm.style.display = "block";
                 document.getElementById("address").textContent = velo.address;
                 //je stock l'addresse pour l'afficher à la réservation
                 localStorage.setItem("Adresse", velo.address);
