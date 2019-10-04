@@ -32,9 +32,6 @@ class Sign {
             // Coordonnées de la souris :
             this.cursorX = (e.pageX - rectangle.left);
             this.cursorY = (e.pageY - rectangle.top);
-            
-            //Apparition bouton valider
-            this.button.style.display = "block";
         });
 
     }
@@ -61,6 +58,9 @@ class Sign {
                 this.cursorX = (e.pageX - rectangle.left) - 2; // 10 = décalage du curseur
                 this.cursorY = (e.pageY - rectangle.top) - 2;
                 this.drawLine(e)
+            
+                //Apparition bouton valider
+                this.button.style.display = "block";
             }
         });
     }
