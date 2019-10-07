@@ -153,11 +153,44 @@ ul {
     }
 
     #map {
-        width: 85%;
+        width: 95%;
+        margin-bottom: 4%;
     }
 
     #station_details {
         width: 95%;
+        padding: 0;
+        margin: Auto;
+    }
+
+    #station_details p {
+        text-align: center;
+    }
+
+    #station_details p, li {
+        font-size: 1em;
+    }
+
+    #station_details ul {
+        padding-left: 5%;
+    }
+
+    #station_details form input {
+        margin: 4% 5%;
+    }
+
+    #signature {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        margin: 6px 6%;
+    
+    }
+
+    #check p {
+        position: relative;
+        top: 854px;
+        left: 221px;    
     }
 }
 
