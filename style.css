@@ -6,8 +6,8 @@ ul {
 #slider_buttons {
     position: absolute;
     top: 400px;
-    left: 475px;
     display: flex;
+    margin: 0 37%;
 }
 
 #slider_buttons #play {
@@ -141,4 +141,27 @@ ul {
 #check p:hover {
     background: #338310;
     box-shadow: 2px 2px 2px #000000;
+}
+
+/*RESPONSIVE*/
+
+/*Format mobile*/
+@media screen and (max-width: 449px) {
+    #container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #map {
+        width: 85%;
+    }
+
+    #station_details {
+        width: 95%;
+    }
+}
+
+/*Format tablette*/
+@media screen and (min-width: 450px) and (max-width: 1279px) {
+
 }
