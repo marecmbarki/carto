@@ -209,7 +209,7 @@ ul {
         position: relative;
         bottom: 0;
         left: 0;
-        margin: 6px 6%;
+        margin: 6px 6% 60px 0;
         width: 87%;
     }
 
@@ -219,10 +219,9 @@ ul {
 
     #check p {
         position: relative;
-        top: 863px;   
+        top: 1143px;   
         left: 10px;
-        padding: 0;
-        margin-top: 31%;
+        margin: 0 20px 57px;
     }
 
     #booking ul {
@@ -272,7 +271,7 @@ ul {
     #signature {
     margin-top: 5%;   
     left: 50%;
-    top: 5%;
+    top: 20px;
     }
 
     #check p {
@@ -286,6 +285,47 @@ ul {
 }
 
 /*Format grande tablette*/
-@media screen and (min-width: 657px) and (max-width: 839px) {
+@media screen and (min-width: 657px) and (max-width: 959px) {
+    #slides img {
+        object-fit: fill;
+    }
 
+    #slider_buttons {
+        margin: 0 0 0 4%;
+    }
+
+    #slider_buttons img{
+        margin: 0;
+        height: 42px;
+    }
+
+    #slider_buttons img:hover {
+        height: 38px;
+        width: 38px;
+    }
+
+    #signature {
+        position: static;
+    }
+
+    #check p {
+        top: 566px;
+        left: 526px;
+    }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1024px) {
+    #slider_buttons {
+        margin: 0 32%;
+    }
+
+    #signature {
+        height: 201px;
+        left: 615px;
+        bottom: 286px;
+    }
+
+    #check p {
+        left: 615px;
+    }
 }
