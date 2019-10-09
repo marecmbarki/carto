@@ -224,16 +224,68 @@ ul {
         padding: 0;
         margin-top: 31%;
     }
+
+    #booking ul {
+        text-align: left;
+    }
 }
 
 /*Format tablette*/
-@media screen and (min-width: 450px) and (max-width: 1279px) {
+@media screen and (min-width: 450px) and (max-width: 656px) {
+
+    #container {
+        display: flex;
+        flex-direction: column
+    }
+   
+    #map {
+        width: 97%;
+    }
+
+    #station_details {
+        width: 97%;
+        margin: 0;
+    }
 
     #slides img {
-        object-fit: none;
+        object-fit: fill;
+    }
+
+    #slides {
+        height: 287px;
     }
 
     #slider_buttons {
         margin: 0 0;
+        top: 250px;
     }
+
+    #slider_buttons img {
+        height: 40px;
+    }
+
+    #slider_buttons img:hover {
+        height: 36px;
+        width: 36px;
+    }
+
+    #signature {
+    margin-top: 5%;   
+    left: 50%;
+    top: 5%;
+    }
+
+    #check p {
+        top: 1011px;   
+        left: 0;
+    }
+
+    #booking ul {
+        text-align: left;
+    }
+}
+
+/*Format grande tablette*/
+@media screen and (min-width: 657px) and (max-width: 839px) {
+
 }
