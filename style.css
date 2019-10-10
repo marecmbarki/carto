@@ -222,6 +222,7 @@ ul {
         top: 1143px;   
         left: 10px;
         margin: 0 20px 57px;
+        z-index: 2;
     }
 
     #booking ul {
@@ -271,12 +272,13 @@ ul {
     #signature {
     margin-top: 5%;   
     left: 50%;
-    top: 20px;
+    top: 20px;   
     }
 
     #check p {
         top: 1011px;   
         left: 0;
+        z-index: 2;
     }
 
     #booking ul {
@@ -284,7 +286,7 @@ ul {
     }
 }
 
-/*Format grande tablette*/
+/*Formats grande tablette*/
 @media screen and (min-width: 657px) and (max-width: 959px) {
     #slides img {
         object-fit: fill;
@@ -311,10 +313,11 @@ ul {
     #check p {
         top: 566px;
         left: 526px;
+        z-index: 2;
     }
 }
 
-@media screen and (min-width: 960px) and (max-width: 1024px) {
+@media screen and (min-width: 960px) and (max-width: 1052px) {
     #slider_buttons {
         margin: 0 32%;
     }
@@ -327,5 +330,19 @@ ul {
 
     #check p {
         left: 615px;
+        z-index: 2;
+    }
+}
+
+@media screen and (min-width: 1053px) and (max-width: 1279px) {
+    #signature {
+        left: 704px;
+        height: 201px;
+        bottom: 266px;
+    }
+
+    #check p {
+        left: 704px;
+        z-index: 2;
     }
 }

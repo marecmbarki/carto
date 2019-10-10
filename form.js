@@ -9,14 +9,13 @@ class Form {
     load() {
         //Evenement clique formulire
         this.sendForm.addEventListener("click", ()=> {    
-            localStorage.setItem("Name", this.nameForm);
-            localStorage.setItem("First-Name", this.firstNameForm);
-            this.canvas.style.display = "block";
+                localStorage.setItem("Name", this.nameForm);
+                localStorage.setItem("First-Name", this.firstNameForm);
+                this.canvas.style.display = "block";
 
+                const signature = new Sign();
 
-            const signature = new Sign();
-
-            signature.canvasCreate();
+                signature.canvasCreate();
         });
     }
 }

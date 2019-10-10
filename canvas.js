@@ -29,7 +29,6 @@ class Sign {
             let rectangle = this.canvas.getBoundingClientRect(e);
 
             // Coordonnées de la souris :
-            console.log(e.touches[0]);
             this.cursorX = (e.touches[0].pageX - rectangle.left);
             this.cursorY = (e.touches[0].pageY - rectangle.top);
         });
@@ -97,6 +96,7 @@ class Sign {
     }
     
     // Fonction qui dessine une ligne :
+    
     drawLine(e) {
         
         this.context.strokeStyle = this.color;
