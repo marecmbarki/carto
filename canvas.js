@@ -24,6 +24,16 @@ class Sign {
     
     mousedown() {
         
+        this.canvas.addEventListener("touchstart", (e)=> {
+            this.painting = true;
+            let rectangle = this.canvas.getBoundingClientRect(e);
+
+            // Coordonnées de la souris :
+            console.log(e.touches[0]);
+            this.cursorX = (e.touches[0].pageX - rectangle.left);
+            this.cursorY = (e.touches[0].pageY - rectangle.top);
+        });
+        
         // Click souris enfoncé sur le canvas, je dessine :
         this.canvas.addEventListener("mousedown", (e)=> {
             this.painting = true;
@@ -38,6 +48,11 @@ class Sign {
 
     mouseup() {
 
+        this.canvas.addEventListener("touchend", ()=> {
+            this.painting = false;
+            this.started = false;
+        });
+
         // Relachement du Click sur tout le document, j'arrête de dessiner :
         this.canvas.addEventListener("mouseup", ()=> {
             this.painting = false;
@@ -47,6 +62,22 @@ class Sign {
 
     mousemove() {
         
+        this.canvas.addEventListener("touchmove", (e)=> {
+            
+            let rectangle = this.canvas.getBoundingClientRect(e);
+
+            // Si je suis en train de dessiner (click souris enfoncé) :
+            if (this.painting) {
+                // Set Coordonnées de la souris :
+                this.cursorX = (e.touches[0].pageX - rectangle.left) - 2; // 10 = décalage du curseur
+                this.cursorY = (e.touches[0].pageY - rectangle.top) - 2;
+                this.drawLine(e)
+            
+                //Apparition bouton valider
+                this.button.style.display = "block";
+            }
+        });
+       
         // Mouvement de la souris sur le canvas :
         this.canvas.addEventListener("mousemove", (e)=> {
             
@@ -64,6 +95,7 @@ class Sign {
             }
         });
     }
+    
     // Fonction qui dessine une ligne :
     drawLine(e) {
         

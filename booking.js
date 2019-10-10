@@ -5,13 +5,12 @@ class Booking {
         this.minute = 19;
         this.seconde = 59;
         this.i = 0;
-        this.address = localStorage.getItem("Adresse");
         this.name = localStorage.getItem("Name");
         this.firstName = localStorage.getItem("First-Name");
     }
     
     load() {
-            this.button.addEventListener("click", ()=> {
+        this.button.addEventListener("click", ()=> {
             //Cacher bouton et canvas
             this.button.style.display = "none";
             this.canvas.style.display = "none";
@@ -41,7 +40,8 @@ class Booking {
             }, 1000);
         
             //Afficher infos
-            document.getElementById("bookingAddress").textContent = this.address;
+            let address = sessionStorage.getItem("Adresse");
+            document.getElementById("bookingAddress").textContent = address;
             document.getElementById("bookingName").textContent = this.name + " " + this.firstName;
         });
     }
