@@ -15,7 +15,6 @@ class Sign {
         this.mousedown();
         this.mouseup();
         this.mousemove();
-        this.drawLine();
     }
     canvasCreate() {
         this.context.fillStyle = "rgb(179,200,158)";
@@ -70,7 +69,7 @@ class Sign {
                 // Set Coordonnées de la souris :
                 this.cursorX = (e.touches[0].pageX - rectangle.left) - 2; // 10 = décalage du curseur
                 this.cursorY = (e.touches[0].pageY - rectangle.top) - 2;
-                this.drawLine(e)
+                this.drawLineTouch(e)
             
                 //Apparition bouton valider
                 this.button.style.display = "block";
@@ -97,6 +96,33 @@ class Sign {
     
     // Fonction qui dessine une ligne :
     
+    drawLineTouch(e) {
+        
+        this.context.strokeStyle = this.color;
+        this.context.lineWidth = this.width_brush;
+
+        // Si c'est le début, j'initialise
+        if (!this.started) {
+            // Je place mon curseur pour la première fois :
+            this.context.moveTo(this.cursorX, this.cursorY);
+            this.context.beginPath();
+            this.started = true;
+        }
+        // Sinon je dessine
+        else {
+            const rect = this.canvas.getBoundingClientRect(e);
+
+            const x = (e.touches[0].clientX - rect.left) * (this.canvas.width / rect.width);
+            const y = (e.touches[0].clientY - rect.top) * (this.canvas.height / rect.height);
+
+            
+            console.log(x, y);
+            this.context.lineTo(x, y);
+            this.context.stroke();
+        }
+
+    }
+
     drawLine(e) {
         
         this.context.strokeStyle = this.color;
