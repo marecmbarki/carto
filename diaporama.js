@@ -17,6 +17,7 @@ class Slider {
         clearInterval(this.slideInterval);
     }
     
+    //Deffiler le Diaporama
     nextSlide() {
         this.slides[this.i].className = 'slide';
         this.i = (this.i + 1) % this.slides.length;
@@ -24,6 +25,7 @@ class Slider {
 
     }
 
+    //Boutons du Diaporama
     load() {
         this.play.addEventListener("click", ()=> {
             this.start();

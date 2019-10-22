@@ -5,8 +5,6 @@ class Booking {
         this.minute = 19;
         this.seconde = 59;
         this.i = 0;
-        this.name = localStorage.getItem("Name");
-        this.firstName = localStorage.getItem("First-Name");
     }
     
     load() {
@@ -40,9 +38,12 @@ class Booking {
             }, 1000);
         
             //Afficher infos
+            let name = localStorage.getItem("Name");
+            let firstName = localStorage.getItem("First-Name");
             let address = sessionStorage.getItem("Adresse");
+            
             document.getElementById("bookingAddress").textContent = address;
-            document.getElementById("bookingName").textContent = this.name + " " + this.firstName;
+            document.getElementById("bookingName").textContent = name + " " + firstName;
         });
     }
 }
