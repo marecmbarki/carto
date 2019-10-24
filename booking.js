@@ -2,20 +2,47 @@ class Booking {
     constructor() {
         this.button = document.getElementById("check");
         this.canvas = document.getElementById("signature");
-        this.minute = 19;
-        this.seconde = 59;
+        this.minute;
+        this.seconde;
         this.i = 0;
+        this.bookChecked;
+        this.startLocation;
     }
-    
+
+
     load() {
         this.button.addEventListener("click", ()=> {
-            //Cacher bouton et canvas
+            this.bookChecked = true;
+            sessionStorage.setItem("BookStatus", this.bookChecked);
+            this.startLocation = sessionStorage.getItem("BookStatus");
+            this.minute = 19;
+            this.seconde = 59;
+            
+            sessionStorage.setItem("Minute", this.minute);
+            sessionStorage.setItem("Seconde", this.seconde);
+            this.check();
+        });
+    }
+    
+    check() {
+            this.startLocation = sessionStorage.getItem("BookStatus");
+            
+            if (this.startLocation) {
+                this.valid();
+            }
+    }
+
+    valid() {    
+        //Cacher bouton et canvas
             this.button.style.display = "none";
             this.canvas.style.display = "none";
             //Afficher les détails
             document.getElementById("booking").style.display = "block";
             //Afficher timer
-            let countdownInterval = setInterval(()=> {        
+            this.minute = sessionStorage.getItem("Minute");
+            this.seconde = sessionStorage.getItem("Seconde");
+            
+            let countdownInterval = setInterval(()=> {
                 this.seconde--;
                 if (this.seconde < 0 ) {
                     this.seconde=59;
@@ -30,20 +57,35 @@ class Booking {
                 if (this.i > 19)
                 {
                     clearInterval(countdownInterval);
+                    this.bookChecked = false
+                    this.startLocation = false;
+                    sessionStorage.setItem("BookStatus", this.bookChecked);
                 }
                 else {
-                document.getElementById("bookingTimer").textContent = " " + this.minute + "min " + this.seconde + "s"; 
+                    //Je les affiche
+                    sessionStorage.setItem("Minute", this.minute);
+                    sessionStorage.setItem("Seconde", this.seconde);
+                    this.displayCounter();
                 }
-                
-            }, 1000);
-        
-            //Afficher infos
-            let name = localStorage.getItem("Name");
-            let firstName = localStorage.getItem("First-Name");
-            let address = sessionStorage.getItem("Adresse");
+            }, 1);
             
-            document.getElementById("bookingAddress").textContent = address;
-            document.getElementById("bookingName").textContent = name + " " + firstName;
-        });
+            this.displayDetails();
+        }
+
+    displayCounter() {
+        this.minute = sessionStorage.getItem("Minute");
+        this.seconde = sessionStorage.getItem("Seconde");
+        document.getElementById("bookingTimer").textContent = " " + this.minute + "min " + this.seconde + "s";
     }
+    
+    displayDetails() {
+        //Afficher informtions de l'utilisateur
+        let name = localStorage.getItem("Name");
+        let firstName = localStorage.getItem("First-Name");
+        let address = sessionStorage.getItem("Adresse");
+        
+        document.getElementById("bookingAddress").textContent = address;
+        document.getElementById("bookingName").textContent = name + " " + firstName;
+    }
+
 }
