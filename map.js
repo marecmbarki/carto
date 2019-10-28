@@ -29,9 +29,6 @@ class Map {
 
         const map = L.map('map').setView([36.6958, 137.21399999999994], 13);
 
-        const BookingEvent = new Booking();
-        BookingEvent.load();
-
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);

@@ -4,7 +4,7 @@ class Booking {
         this.canvas = document.getElementById("signature");
         this.minute;
         this.seconde;
-        this.i = 0;
+        this.i;
         this.bookChecked;
         this.startLocation;
     }
@@ -17,9 +17,12 @@ class Booking {
             this.startLocation = sessionStorage.getItem("BookStatus");
             this.minute = 19;
             this.seconde = 59;
-            
+            this.i = 0;
+
+            sessionStorage.setItem("Compteur", this.i);
             sessionStorage.setItem("Minute", this.minute);
             sessionStorage.setItem("Seconde", this.seconde);
+            console.log("methode load ", this.i);
             this.check();
         });
     }
@@ -27,12 +30,13 @@ class Booking {
     check() {
             this.startLocation = sessionStorage.getItem("BookStatus");
             
+            console.log("methode check", this.i);
             if (this.startLocation) {
                 this.valid();
             }
     }
 
-    valid() {    
+    valid() {
         //Cacher bouton et canvas
             this.button.style.display = "none";
             this.canvas.style.display = "none";
@@ -41,13 +45,15 @@ class Booking {
             //Afficher timer
             this.minute = sessionStorage.getItem("Minute");
             this.seconde = sessionStorage.getItem("Seconde");
-            
+            this.i = sessionStorage.getItem("Compteur");
             let countdownInterval = setInterval(()=> {
                 this.seconde--;
                 if (this.seconde < 0 ) {
-                    this.seconde=59;
+                    this.seconde = 59;
                     this.minute--;
                     this.i++;
+                    console.log(this.i);
+                    sessionStorage.setItem("Compteur", this.i);
                 }
 
                 if (this.seconde < 10) {
@@ -56,10 +62,12 @@ class Booking {
                     
                 if (this.i > 19)
                 {
+                    console.log("i > 19 donc on a finit le decompte et on arrete", this.i);
                     clearInterval(countdownInterval);
                     this.bookChecked = false
                     this.startLocation = false;
                     sessionStorage.setItem("BookStatus", this.bookChecked);
+                    document.getElementById("booking").style.display = "none";
                 }
                 else {
                     //Je les affiche
