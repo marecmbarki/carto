@@ -24,9 +24,7 @@ class Sign {
     mousedown() {
         
         this.canvas.addEventListener("touchstart", (e)=> {
-            this.painting = true;
-            let rectangle = this.canvas.getBoundingClientRect(e);
-
+            this.firstTouch();
             // Coordonnées de la souris :
             this.cursorX = (e.touches[0].pageX - rectangle.left);
             this.cursorY = (e.touches[0].pageY - rectangle.top);
@@ -34,9 +32,7 @@ class Sign {
         
         // Click souris enfoncé sur le canvas, je dessine :
         this.canvas.addEventListener("mousedown", (e)=> {
-            this.painting = true;
-            let rectangle = this.canvas.getBoundingClientRect(e);
-
+            this.firstTouch();
             // Coordonnées de la souris :
             this.cursorX = (e.pageX - rectangle.left);
             this.cursorY = (e.pageY - rectangle.top);
@@ -47,14 +43,12 @@ class Sign {
     mouseup() {
 
         this.canvas.addEventListener("touchend", ()=> {
-            this.painting = false;
-            this.started = false;
+            this.stopTouching();
         });
 
         // Relachement du Click sur tout le document, j'arrête de dessiner :
         this.canvas.addEventListener("mouseup", ()=> {
-            this.painting = false;
-            this.started = false;
+            this.stopTouching();
         });
     }
 
@@ -103,10 +97,7 @@ class Sign {
 
         // Si c'est le début, j'initialise
         if (!this.started) {
-            // Je place mon curseur pour la première fois :
-            this.context.moveTo(this.cursorX, this.cursorY);
-            this.context.beginPath();
-            this.started = true;
+            this.drawlineInit();
         }
         // Sinon je dessine
         else {
@@ -130,10 +121,7 @@ class Sign {
 
         // Si c'est le début, j'initialise
         if (!this.started) {
-            // Je place mon curseur pour la première fois :
-            this.context.moveTo(this.cursorX, this.cursorY);
-            this.context.beginPath();
-            this.started = true;
+            this.drawlineInit();
         }
         // Sinon je dessine
         else {
@@ -141,5 +129,22 @@ class Sign {
             this.context.stroke();
         }
 
+    }
+
+    firstTouch() {
+        this.painting = true;
+        let rectangle = this.canvas.getBoundingClientRect(e);
+    }
+
+    stopTouching() {
+        this.painting = false;
+        this.started = false;
+    }
+
+    drawlineInit() {
+        // Je place mon curseur pour la première fois :
+        this.context.moveTo(this.cursorX, this.cursorY);
+        this.context.beginPath();
+        this.started = true;
     }
 }

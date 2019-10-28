@@ -65,7 +65,7 @@ ul {
     height: 100%;
 }
 
-#container {
+#main_page {
     display: flex;
     flex-direction: row;
 }
@@ -173,7 +173,7 @@ ul {
         top: 217px;
     }
 
-    #container {
+    #main_page {
         display: flex;
         flex-direction: column;
     }
@@ -233,7 +233,7 @@ ul {
 /*Format tablette*/
 @media screen and (min-width: 450px) and (max-width: 656px) {
 
-    #container {
+    #main_page {
         display: flex;
         flex-direction: column
     }

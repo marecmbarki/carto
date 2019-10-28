@@ -15,56 +15,66 @@
 </head>
 
 <body>
-    <div id="slider_buttons">
-        <img src="left-arrow.png" alt="left-arrow" id="left_arrow">
-        <img src="play.png" alt="play" id="play">
-        <img src="pause.png" alt="pause" id="pause">
-        <img src="right-arrow.png" alt="right-arrow" id="right_arrow">
-    </div>
-    <ul id="slides">
-        <li class="slide_showing"><img src="img11.jpg" alt="montagne japon"></li>
-        <li class="slide"><img src="img22.jpg" alt="magasin japonais"></li>
-        <li class="slide"><img src="img33.jpg" alt="rue commerçante"></li>
-        <li class ="slide"><img src="img44.jpg" alt="nature"></li>
-    </ul>
-    <div id="container">
-        <div id="map"></div>
-        <div id="station_details">
-            <p>Détails de la station</p>
-            <ul id="station_details_list">
-                <li>Adresse : <span id="address"></span></li>
-                <li><span id="places"></span> places</li>
-                <li><span id="bikes"></span> vélos disponibles</li>
-            </ul> 
-            <form name="main_form" onsubmit="return false" action="">
-                <input type="text" name="name" id="form_name" placeholder="Name" required>
-                <input type="text" name="first_name" id="form_first_name" placeholder="First Name" required>
-                <span id="submitButton">
-                    <input type ="submit" value="Réserver">
-                </span>
-            </form>
+    <header>    
+        <div id="slider_buttons">
+            <img src="images/left-arrow.png" alt="Show the previous picture" id="left_arrow">
+            <img src="images/play.png" alt="Begin the slide show" id="play">
+            <img src="images/pause.png" alt="Stop the slide show" id="pause">
+            <img src="images/right-arrow.png" alt="Show the next picture" id="right_arrow">
         </div>
-        <div id="validate_button">
-            <div id="check">
-                <p>Valider</p>
-            </div>
-        </div>    
-    </div>
-    <div id="canvas_contain">
-        <canvas id="signature" width="300" height="230"></canvas>
-    </div>
-    <div id="booking">
-        <ul>
-            <li>Vélo réservé à <span id="bookingAddress"></span> par <span id="bookingName"></span>.</li>
-            <li>Temps restant :<span id="bookingTimer"></span>.</li>
+        <ul id="slides">
+            <li class="slide_showing"><img src="images/img11.jpg" alt="Montain in japan"></li>
+            <li class="slide"><img src="images/img22.jpg" alt="Japanese shop"></li>
+            <li class="slide"><img src="images/img33.jpg" alt="Shopping street"></li>
+            <li class ="slide"><img src="images/img44.jpg" alt="Forest in japan"></li>
         </ul>
-    </div>
-    <script src="ajax.js"></script>
-    <script src="map.js"></script>
-    <script src="diaporama.js"></script>
-    <script src="booking.js"></script>
-    <script src="form.js"></script>
-    <script src="canvas.js"></script>
-    <script src="main.js"></script>
+    </header>
+    <section>
+        <article>
+            <div id="main_page">
+                <div id="map"></div>
+                <div id="station_details">
+                    <p>Détails de la station</p>
+                    <ul id="station_details_list">
+                        <li>Adresse : <span id="address"></span></li>
+                        <li><span id="places"></span> places</li>
+                        <li><span id="bikes"></span> vélos disponibles</li>
+                    </ul> 
+                    <form name="main_form" onsubmit="return false" action="">
+                        <input type="text" name="name" id="form_name" placeholder="Name" required>
+                        <input type="text" name="first_name" id="form_first_name" placeholder="First Name" required>
+                        <span id="submitButton">
+                            <input type ="submit" value="Réserver">
+                        </span>
+                    </form>
+                </div>
+                <div id="validate_button">
+                    <div id="check">
+                        <p>Valider</p>
+                    </div>
+                </div>    
+            </div>   
+            <aside>    
+                <div id="canvas_contain">
+                    <canvas id="signature" width="300" height="230"></canvas>
+                </div>
+            </aside>
+        </article>
+        <footer>
+            <div id="booking">
+                <ul>
+                    <li>Vélo réservé à <span id="bookingAddress"></span> par <span id="bookingName"></span>.</li>
+                    <li>Temps restant :<span id="bookingTimer"></span>.</li>
+                </ul>
+            </div>
+        </footer>
+    </section>
+    <script src="javascript/ajax.js"></script>
+    <script src="javascript/map.js"></script>
+    <script src="javascript/diaporama.js"></script>
+    <script src="javascript/booking.js"></script>
+    <script src="javascript/form.js"></script>
+    <script src="javascript/canvas.js"></script>
+    <script src="javascript/main.js"></script>
 </body>
 </html>
