@@ -22,29 +22,31 @@ class Booking {
             sessionStorage.setItem("Counter", this.i);
             sessionStorage.setItem("Minute", this.minute);
             sessionStorage.setItem("Second", this.second);
-            console.log("methode load ", this.i);
-            this.check();
+            this.checkBookingStatus();
         });
     }
     
-    check() {
+    checkBookingStatus() {
         this.startLocation = sessionStorage.getItem("BookStatus");    
-        console.log("methode check", this.i);
+        
         if (this.startLocation) {
-            this.valid();
+            this.managingBooking();
         }
     }
 
-    valid() {
-        //Cacher bouton et canvas
-        this.button.style.display = "none";
-        this.canvas.style.display = "none";
-        //Afficher les détails
-        document.getElementById("booking").style.display = "block";
-        //Afficher timer
+    managingBooking() {
         this.minute = sessionStorage.getItem("Minute");
         this.second = sessionStorage.getItem("Second");
         this.i = sessionStorage.getItem("Counter");
+        
+        //Cacher bouton et canvas
+        this.button.style.display = "none";
+        this.canvas.style.display = "none";
+        
+        //Afficher la réservation
+        document.getElementById("booking").style.display = "block";
+        
+        //Gérer la réservation
         this.managingTimer();
         this.displayDetails();
     }
@@ -52,34 +54,32 @@ class Booking {
     managingTimer() {
         let countdownInterval = setInterval(()=> {
             this.second--;
-            if (this.second < 0 ) {
+            if (this.second < 0 ) { //Quand une minute s'écoule
                 this.second = 59;
                 this.minute--;
                 this.i++;
-                console.log(this.i);
                 sessionStorage.setItem("Counter", this.i);
             }
 
-            if (this.second < 10) {
+            if (this.second < 10) { //Gerer le bon affichage des secondes 
                 this.second = '0' + this.second;
             }
                     
-            if (this.i > 19)
-            {
-                console.log("i > 19 donc on a finit le decompte et on arrete", this.i);
-                clearInterval(countdownInterval);
+            if (this.i > 19) { //Quand 20minutes se sont écoulées
+                //Fin de la reservation
                 this.bookChecked = false
                 this.startLocation = false;
+                
+                clearInterval(countdownInterval);
                 sessionStorage.setItem("BookStatus", this.bookChecked);
                 document.getElementById("booking").style.display = "none";
-            }
-            else {
-                //Je les affiche
+            } else {
+                //J'affiche le Timer
                 sessionStorage.setItem("Minute", this.minute);
                 sessionStorage.setItem("Second", this.second);
                 this.displayCounter();
             }
-        }, 1);
+        }, 1000);
     }
     
     displayCounter() {
@@ -89,7 +89,7 @@ class Booking {
     }
     
     displayDetails() {
-        //Afficher informtions de l'utilisateur
+        //Afficher informations de l'utilisateur
         let name = localStorage.getItem("Name");
         let firstName = localStorage.getItem("First-Name");
         let address = sessionStorage.getItem("Address");
@@ -97,5 +97,4 @@ class Booking {
         document.getElementById("bookingAddress").textContent = address;
         document.getElementById("bookingName").textContent = name + " " + firstName;
     }
-
 }

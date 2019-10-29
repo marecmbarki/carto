@@ -12,20 +12,20 @@ class Sign {
         // Trait arrondi :
         this.context.lineJoin = 'round';
         this.context.lineCap = 'round';
-        this.mousedown();
-        this.mouseup();
-        this.mousemove();
+        this.startSigning();
+        this.stopSigning();
+        this.signing();
     }
     canvasCreate() {
         this.context.fillStyle = "rgb(179,200,158)";
         this.context.fillRect(0,0,600,300);
     }
     
-    mousedown() {
+    startSigning() {
         
         this.canvas.addEventListener("touchstart", (e)=> {
             this.firstTouch();
-            // Coordonnées de la souris :
+            // Coordonnées du touch :
             this.cursorX = (e.touches[0].pageX - rectangle.left);
             this.cursorY = (e.touches[0].pageY - rectangle.top);
         });
@@ -40,7 +40,7 @@ class Sign {
 
     }
 
-    mouseup() {
+    stopSigning() {
 
         this.canvas.addEventListener("touchend", ()=> {
             this.stopTouching();
@@ -52,7 +52,7 @@ class Sign {
         });
     }
 
-    mousemove() {
+    signing() {
         
         this.canvas.addEventListener("touchmove", (e)=> {
             

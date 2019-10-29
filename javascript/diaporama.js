@@ -27,19 +27,19 @@ class Slider {
 
     //Boutons du Diaporama
     load() {
-        this.play.addEventListener("click", ()=> {
+        this.play.addEventListener("click", ()=> { //play
             this.start();
             this.play.style.display = "none";
             this.pause.style.display = "block";
         });
         
-        this.pause.addEventListener("click", ()=> {
+        this.pause.addEventListener("click", ()=> { //pause
             this.stop();
             this.play.style.display = "block";
             this.pause.style.display = "none";
         });
     
-        this.leftScroll.addEventListener("click", ()=> {
+        this.leftScroll.addEventListener("click", ()=> { //image qui précéde
             this.slides[this.i].className = 'slide';
             if (this.i === 0)
             {
@@ -51,7 +51,7 @@ class Slider {
             this.slides[this.i].className = 'slide_showing';
         });
     
-        this.rightScroll.addEventListener("click", ()=> {
+        this.rightScroll.addEventListener("click", ()=> { //imge qui suit
             this.nextSlide();
         })
     }
